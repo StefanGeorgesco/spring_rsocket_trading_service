@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: rsocket-trading-service
+  rsocket:
+    server:
+      port: 7071
+  mongodb:
+    database: trading-service
