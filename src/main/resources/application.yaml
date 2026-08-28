@@ -1,8 +1,13 @@
 spring:
   application:
     name: rsocket-trading-service
-  rsocket:
-    server:
-      port: 7071
   mongodb:
     database: trading-service
+
+service:
+  stock:
+    host: localhost
+    port: 7070
+  user:
+    host: localhost
+    port: 7071
