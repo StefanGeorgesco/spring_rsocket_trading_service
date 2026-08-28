@@ -1,10 +1,12 @@
 package fr.stefangeorgesco.rsockettradingservice.service;
 
 import fr.stefangeorgesco.rsockettradingservice.dto.StockTradeRequest;
+import fr.stefangeorgesco.rsockettradingservice.dto.UserStockDto;
 import fr.stefangeorgesco.rsockettradingservice.entity.UserStock;
 import fr.stefangeorgesco.rsockettradingservice.repository.UserStockRepository;
 import fr.stefangeorgesco.rsockettradingservice.util.EntityDtoUtil;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Service
@@ -14,6 +16,11 @@ public class UserStockService {
 
     public UserStockService(UserStockRepository stockRepository) {
         this.stockRepository = stockRepository;
+    }
+
+    public Flux<UserStockDto> getUserStocks(String userId) {
+        return stockRepository.findByUserId(userId)
+                .map(EntityDtoUtil::toUserStockDto);
     }
 
     public Mono<UserStock> buyStock(StockTradeRequest request) {

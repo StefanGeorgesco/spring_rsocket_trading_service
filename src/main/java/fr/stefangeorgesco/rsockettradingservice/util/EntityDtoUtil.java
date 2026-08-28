@@ -6,11 +6,17 @@ import fr.stefangeorgesco.rsockettradingservice.domain.TransactionType;
 import fr.stefangeorgesco.rsockettradingservice.dto.StockTradeRequest;
 import fr.stefangeorgesco.rsockettradingservice.dto.StockTradeResponse;
 import fr.stefangeorgesco.rsockettradingservice.dto.TransactionRequest;
+import fr.stefangeorgesco.rsockettradingservice.dto.UserStockDto;
 import fr.stefangeorgesco.rsockettradingservice.entity.UserStock;
 
 public class EntityDtoUtil {
 
     private EntityDtoUtil() {
+    }
+
+    public static UserStockDto toUserStockDto(UserStock userStock) {
+        return new UserStockDto(userStock.getId(), userStock.getUserId(),
+                userStock.getStockSymbol(), userStock.getQuantity());
     }
 
     public static TransactionRequest toTransactionRequest(StockTradeRequest stockTradeRequest, int amount) {
