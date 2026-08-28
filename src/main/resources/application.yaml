@@ -3,6 +3,7 @@ spring:
     name: rsocket-trading-service
   mongodb:
     database: trading-service
+    port: 27018
 
 service:
   stock:
